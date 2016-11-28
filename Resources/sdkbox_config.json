@@ -8,10 +8,11 @@
                     "id": "ca-app-pub-1329374026572143/1092476511"
                 }, 
                 "home": {
-                    "width": 200, 
-                    "type": "interstitial", 
-                    "id": "ca-app-pub-1329374026572143/1092476511", 
-                    "height": 100
+                    "width": 0, 
+                    "type": "banner", 
+                    "id": "ca-app-pub-1305838070819259/1796150925", 
+                    "height": 0,
+                    "alignment": "bottom"
                 }
             }
         }

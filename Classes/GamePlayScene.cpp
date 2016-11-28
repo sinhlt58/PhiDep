@@ -5,7 +5,7 @@
 #include "SimpleAudioEngine.h"
 #include <fstream>
 
-
+static std::string homeAd = "home";
 #ifdef SDKBOX_ENABLED
 #include "PluginAdMob/PluginAdMob.h"
 #endif
@@ -370,6 +370,18 @@ void GamePlayScene::update(float delta)
 	m_ReplayButton->setPosition(Vec2(m_WinVisibleSize.width - wallSize.width - replayButtonSize.width - margin,
 								cameraPos.y - m_WinVisibleSize.height/2 + margin));
 	
+	/*Ad*/
+#ifdef SDKBOX_ENABLED
+	{
+		if(m_State == welcoming)
+		{
+			sdkbox::PluginAdMob::show(homeAd);
+		}else
+		{
+			sdkbox::PluginAdMob::hide(homeAd);
+		}
+	}
+#endif
 }
 
 GamePlayScene::~GamePlayScene()
@@ -414,7 +426,7 @@ bool GamePlayScene::onContactBegan(cocos2d::PhysicsContact& contact)
 	return true;
 }
 
-static std::string homeAd = "home";
+
 
 cocos2d::Vec2 GamePlayScene::getRandomClickHere()
 {
@@ -446,6 +458,7 @@ void GamePlayScene::createTestAd()
 //		menu->setPosition(m_WinVisibleSize.width/2, m_WinVisibleSize.height/2);
 //		menu->alignItemsVerticallyWithPadding(20);
 //		addChild(menu);
+		sdkbox::PluginAdMob::cache(homeAd);
 	}
 #endif
 }
